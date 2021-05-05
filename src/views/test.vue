@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Test msg="i am msg" />
+    <Test :msgs="test" />
   </div>
 </template>
 
@@ -10,6 +10,11 @@ import Test from "../components/testComponent.vue";
 
 export default defineComponent({
   name: "Testview",
+  props: {
+    test: {
+      default: [1, 2],
+    },
+  },
   components: {
     Test,
   },
