@@ -1,28 +1,61 @@
 <template>
-  <div id="nav">
+  <div class="main-container">
+    <div class="sidebar">
+      <Sidebar />
+    </div>
+
+    <div class="chat">
+      <chat msgs="test"></chat>
+    </div>
   </div>
-  <router-view />
 </template>
 
 <style>
+html,
+body {
+  height: 95%;
+}
 #app {
+  height: 100%;
+  width: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
+.main-container {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border: 1px solid black;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.chat {
+  display: flex;
+  flex: 1;
+  flex-flow: column wrap;
+  width: 100%;
+  border-left: 1px solid black;
 }
 </style>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+import Chat from "./components/chat.vue";
+import Sidebar from "./components/sidebar.vue";
+
+export default defineComponent({
+  name: "main",
+  components: {
+    Chat,
+    Sidebar,
+  },
+});
+</script>
