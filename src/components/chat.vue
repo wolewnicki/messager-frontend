@@ -3,18 +3,18 @@
     <div>i am head</div>
   </div>
   <div class="chat-container">
-    <div class="msg">
+    <div class="msg" v-for="(msg, index) in msgs" :key="`msg-${index}`">
       <div>
         <div class="msg-top">
-          <div>Nico</div>
+          <div>{{ msg.name }}</div>
         </div>
-        <div class="text">{{ msgs }}</div>
+        <div class="text">{{ msg.body }}</div>
       </div>
     </div>
   </div>
   <div class="input-container">
-    <input class="input" />
-    <button class="send">send</button>
+    <input class="input" v-model="msg" />
+    <button class="send" @click="submit()">send</button>
   </div>
 </template>
 
@@ -24,13 +24,19 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "chat",
   props: {
-    msgs: { required: true, type: String },
+    msgs: { required: true, type: Array },
+  },
+  data() {
+    return {
+      msg: ""
+    }
   },
   methods: {
-    test: (msg: any) => {
-      console.log(msg);
-    },
-  },
+    submit() {
+      this.$emit("sent-msg", this.msg)
+      this.msg = ""
+    }
+  }
 });
 </script>
 

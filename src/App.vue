@@ -5,7 +5,7 @@
     </div>
 
     <div class="chat">
-      <chat msgs="test"></chat>
+      <chat :msgs="Text" @sent-msg="addMsg"></chat>
     </div>
   </div>
 </template>
@@ -56,6 +56,19 @@ export default defineComponent({
   components: {
     Chat,
     Sidebar,
+  },
+  data() {
+    return {
+      Text: [
+        { name: "will", body: "test will" },
+        { name: "nico", body: "test nico" },
+      ],
+    };
+  },
+  methods: {
+    addMsg(msg: string) {
+      this.Text.push({ name: "console", body: msg });
+    },
   },
 });
 </script>
