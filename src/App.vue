@@ -52,7 +52,7 @@ import Chat from "./components/chat.vue";
 import Sidebar from "./components/sidebar.vue";
 
 export default defineComponent({
-  name: "main",
+  name: "myapp",
   components: {
     Chat,
     Sidebar,

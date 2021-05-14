@@ -1,6 +1,7 @@
 <template>
   <div class="header">
     <div>i am head</div>
+    <button @click="request()">getData</button>
   </div>
   <div class="chat-container">
     <div class="msg" v-for="(msg, index) in msgs" :key="`msg-${index}`">
@@ -20,23 +21,26 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { request } from "../ApiCalls/getData";
 
 export default defineComponent({
   name: "chat",
+  emits: ["sent-msg"],
   props: {
     msgs: { required: true, type: Array },
   },
   data() {
     return {
-      msg: ""
-    }
+      msg: "",
+    };
   },
   methods: {
     submit() {
-      this.$emit("sent-msg", this.msg)
-      this.msg = ""
-    }
-  }
+      this.$emit("sent-msg", this.msg);
+      this.msg = "";
+    },
+    request,
+  },
 });
 </script>
 
