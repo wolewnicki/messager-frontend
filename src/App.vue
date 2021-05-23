@@ -50,6 +50,9 @@ body {
 import { defineComponent } from "vue";
 import Chat from "./components/chat.vue";
 import Sidebar from "./components/sidebar.vue";
+import { postTest } from './ApiCalls/getData'
+
+const p = postTest;
 
 export default defineComponent({
   name: "myapp",
@@ -68,6 +71,7 @@ export default defineComponent({
   methods: {
     addMsg(msg: string) {
       this.Text.push({ name: "console", body: msg });
+      p(msg)
     },
   },
 });
