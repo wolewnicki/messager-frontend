@@ -1,4 +1,5 @@
 <template>
+  <div class="g-signin2" data-onsuccess="testFunction"></div>
   <div class="main-container">
     <div class="sidebar">
       <Sidebar />
@@ -50,9 +51,15 @@ body {
 import { defineComponent } from "vue";
 import Chat from "./components/chat.vue";
 import Sidebar from "./components/sidebar.vue";
-import { postTest } from './ApiCalls/getData'
+import { postTest } from "./ApiCalls/getData";
 
 const p = postTest;
+
+function testFunction (google: any) {
+  console.log(google.getAuthResponse().id_token)
+}
+
+(window as any).testFunction = testFunction
 
 export default defineComponent({
   name: "myapp",
@@ -71,8 +78,11 @@ export default defineComponent({
   methods: {
     addMsg(msg: string) {
       this.Text.push({ name: "console", body: msg });
-      p(msg)
+      p(msg);
     },
+    myFunc(google: any) {
+      console.log(google.getBasicProfile());
+    }
   },
 });
 </script>
