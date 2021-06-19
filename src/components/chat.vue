@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div>i am head</div>
-    <button>getData</button>
+    <button @click="test()">getData</button>
   </div>
   <div class="chat-container">
     <div class="msg" v-for="(msg, index) in msgs" :key="`msg-${index}`">
@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { request, postTest } from "../ApiCalls/getData";
+import { request, postTest, test } from "../ApiCalls/getData";
 
 export default defineComponent({
   name: "chat",
@@ -40,7 +40,8 @@ export default defineComponent({
       this.msg = "";
     },
     request,
-    postTest
+    postTest,
+    test
   },
 });
 </script>

@@ -54,6 +54,8 @@ import Sidebar from "./components/sidebar.vue";
 import { postTest } from "./ApiCalls/getData";
 
 const p = postTest;
+declare const gapi: any;
+
 
 function testFunction (google: any) {
   console.log(google.getAuthResponse().id_token)
